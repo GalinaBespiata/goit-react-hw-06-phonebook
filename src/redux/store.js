@@ -18,6 +18,7 @@ import { contactReducer } from './contactSlice.js';
 const contactsReducerConfig = {
   key: 'contact',
   storage,
+  whitelist: ['contacts'],
 };
 
 export const store = configureStore({
