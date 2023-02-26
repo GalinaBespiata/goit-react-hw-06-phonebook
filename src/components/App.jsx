@@ -1,4 +1,3 @@
-// import React, {  useEffect } from 'react';
 import { Filter } from './Filter/Filter';
 
 import { ContactList } from './ContactList/ContactList';
@@ -12,14 +11,6 @@ export function App() {
 
   const filter = useSelector(state => state.contactsData.filter);
   const dispatch = useDispatch();
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
-  // });
-  // const [filter, setFilter] = useState('');
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   const addContact = contact => {
     if (
