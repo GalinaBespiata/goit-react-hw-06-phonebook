@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/contactSlice';
 import css from '../Filter/Filter.module.css';
