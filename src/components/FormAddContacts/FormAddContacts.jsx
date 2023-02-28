@@ -1,15 +1,16 @@
 import { useState } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact, setFilter, removeContact } from 'redux/contactSlice';
+import { nanoid } from 'nanoid';
 import css from '../FormAddContacts/FormAddContacts.module.css';
 
-export const FormAddContacts = ({ onSubmit }) => {
+export const FormAddContacts = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(state => state.contactsData.contacts);
 
-  const reset = () => {
-    setName('');
-    setNumber('');
-  };
+  const dispatch = useDispatch();
+
   const handleInputChange = evt => {
     if (evt.target.name === 'name') {
       setName(evt.target.value);
@@ -27,9 +28,23 @@ export const FormAddContacts = ({ onSubmit }) => {
       number,
     };
 
-    onSubmit(contact);
+    if (
+      contacts.some(el => {
+        return el.name.toLowerCase() === contact.name.toLowerCase();
+      })
+    ) {
+      alert('!!!');
+      return;
+    }
+
+    dispatch(addContact({ id: nanoid(), ...contact }));
 
     reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
 
   return (

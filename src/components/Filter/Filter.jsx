@@ -1,7 +1,16 @@
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter } from 'redux/contactSlice';
 import css from '../Filter/Filter.module.css';
 
-export function Filter({ value, onFilterChange }) {
+export function Filter() {
+  const filter = useSelector(state => state.contactsData.filter);
+  const dispatch = useDispatch();
+
+  const handleFilter = evt => {
+    dispatch(setFilter(evt.target.value));
+  };
+
   return (
     <div>
       <label>
@@ -9,15 +18,10 @@ export function Filter({ value, onFilterChange }) {
         <input
           type="text"
           name="filter"
-          value={value}
-          onChange={onFilterChange}
+          value={filter}
+          onChange={handleFilter}
         ></input>
       </label>
     </div>
   );
 }
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onFilterChange: PropTypes.func.isRequired,
-};
