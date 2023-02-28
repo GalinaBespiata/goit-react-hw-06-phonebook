@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import css from '../ContactList/ContactList.module.css';
 import { Contact } from '../ContactRender/ContactRender.jsx';
 import { useSelector } from 'react-redux';
